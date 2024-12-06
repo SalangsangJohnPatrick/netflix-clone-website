@@ -31,13 +31,10 @@ function sliderRight() {
 async function showMovieData() { 
     const api_key = "a42a5b3385f09b1faaee0c1c7eba6c02"; 
     try {
-        // The API endpoint for a single movie is incorrect
-        // Use popular movies endpoint instead
         const response = await axios.get(
             `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}`
         ); 
 
-        // Check if results exist before mapping
         const results = response.data.results;
         if (results && Array.isArray(results)) {
             results.forEach((cur, index) => { 
@@ -49,7 +46,6 @@ async function showMovieData() {
                 }
             }); 
 
-            // Ensure at least one image exists before setting scrollPerClick
             const firstImage = document.querySelector(".slider-img");
             if (firstImage) {
                 scrollPerClick = firstImage.clientWidth + imagePadding; 
